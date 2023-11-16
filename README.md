@@ -1,4 +1,4 @@
-# study_linux_system
+# study_Linux_system
 리눅스 환경에서 C언어로 system call 활용
 
 ## Linux
