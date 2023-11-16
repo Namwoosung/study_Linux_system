@@ -1,0 +1,41 @@
+Cmake is a build management software that generates build files.
+Instead of building a project directly, it creates a build file.
+Therefore, build files such as Makefile or .ninja are created according to the build environment.
+
+Cmake is available on multiple operating systems, platform independent, and simple syntax.
+If you create a Makefile through Cmake on Linux, it automatically generates Makefile without modifying it unless a new file is added later.
+
+The command for installing Cmake on Linux are as follws.
+	sudo apt install cmake
+
+A brief description of the build process using Cmake is as follows.
+	Create a CmakeLisits.txt file in the project directory
+	this file contains commands to set project configuration and build option
+	Here, the CmakeLists.txt file must exist in the project's top directory
+
+	Then, configure the project and create build settings with Cmake
+
+	Then, Implement software build with appropriate build tools using the created build configuration
+
+Example of creating a makefile via Cmake on Linux
+Place CmakeLists.txt files and source files at the top of the project folder and create a build folder for the build files.
+Here, CmakeLists.txt contains information including version of Cmake and project name, information.
+When Cmake.. command is implemented within build folder, build files including Makefile are created.
+Then, Implementation the make commnad builds the projects.
+
+Function that can be included in CmakeLists.txt are as follws.
+	cmake_mimimum_required(VERSION 3.0.1) #specify the minimum Cmake version required to build a project
+	project(name) #specigy project name
+	add_library(library_name lib.cpp lib.h) #used to create libraries defined as lib.cpp and lib.h as library_name
+	include_directories(dir ...) #add the default path od include file
+	add_executable(result src) #the result file specifies that the executable is created by building src
+	add_dependenciese(target depend1 ...) #add a taget's build dependence
+	target_link_libraries(target lin1...) #specify the libraries for the target required when the linker generates the executable file
+	message(msg) #When Cmake is executed, it outputs characters corresponding to msg
+	target_compile_options() #specify compile option
+	file(GLOB dst <type>) #save file paths or file names corresponding to <type> to dst
+	foreach(src srcs) / endforeach() #put the srcs one by one into src and repeat the syntac foreach() and endforeach()
+	if(IS_DIRECTORY src) / endif() #adding on option to the simple if syntax determines whethere a string coming to src means a file path
+	add_subdirectory(dir) #Add a route to do Cmake
+
+
