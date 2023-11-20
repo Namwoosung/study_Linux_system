@@ -6,7 +6,7 @@ LDFLAGS =
 .c.o:
 	$(CC) -c $(CFLAGS) $<
 
-ALL = pipe sync mymore fifos fifoc msgq1 msgq2 shm sipc1 sipc2 mycp3 mipc pipe_assignment
+ALL = pipe sync mymore fifos fifoc msgq1 msgq2 shm sipc1 sipc2 mycp3 mipc pipe_assignment mipc_assignment
 
 all : $(ALL)
 
@@ -28,7 +28,7 @@ fifoc : fifoc.o
 msgq1 : msgq1.o
 	$(CC) -o $@ $< $(LDFLAGS)
 
-msgq2 : msgq2
+msgq2 : msgq2.o
 	$(CC) -o $@ $< $(LDFLAGS)
 
 shm : shm.o
@@ -47,7 +47,10 @@ mipc : mipc.o synclib.o
 	$(CC) -o $@ $^ $(LDFLAGS)
 
 pipe_assignment : pipe_assignment.o
-	$(CC) -o $@ $< $(LDFLAGS)
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+mipc_assignment : mipc_assignment.o synclib.o
+	$(CC) -o $@ $^ $(LDFLAGS)
 
 clean :
 	rm -rf *.o $(ALL)

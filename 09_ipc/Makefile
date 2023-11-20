@@ -28,7 +28,7 @@ fifoc : fifoc.o
 msgq1 : msgq1.o
 	$(CC) -o $@ $< $(LDFLAGS)
 
-msgq2 : msgq2
+msgq2 : msgq2.o
 	$(CC) -o $@ $< $(LDFLAGS)
 
 shm : shm.o
