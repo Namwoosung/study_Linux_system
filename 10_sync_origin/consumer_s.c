@@ -39,11 +39,11 @@ int main(){
 		fprintf(stderr, "semInitValue failure\n");
 		exit(1);	
 	}
-	if(semInitValue(fullSemid, MAX_BUF) < 0){
+	if(semInitValue(fullSemid, 0) < 0){
 		fprintf(stderr, "semInitValue failure\n");
 		exit(1);	
 	}
-	if(semInitValue(mutexSemid, MAX_BUF) < 0){
+	if(semInitValue(mutexSemid, 1) < 0){
 		fprintf(stderr, "semInitValue failure\n");
 		exit(1);	
 	}
