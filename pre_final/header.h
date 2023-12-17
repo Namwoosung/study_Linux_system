@@ -8,7 +8,7 @@
 #include <fcntl.h> // for file I/O
 #include <string.h>
 #include <dirent.h> //for DIR function
-#include <ctype.h> //toupper 등 function
+#include <ctype.h> //toupper, isdigit 등 function
 #include <signal.h> //for signal
 #include <errno.h> //signal에서 SIG_ERR
 #include <sys/shm.h> //for shared memory system call
@@ -17,3 +17,7 @@
 #include <sys/time.h> //for ThreadUsleep function
 #include <semaphore.h> //for POSIX semaphore
 #include <sys/sem.h> //for System V semaphore
+#include <sys/socket.h> //for socket
+#include <netinet/in.h> // for socket
+#include <arpa/inet.h> //for socket
+#include <netdb.h> //for domain server
