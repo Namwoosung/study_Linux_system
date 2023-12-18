@@ -23,7 +23,7 @@ void CloseServer(){
 }
 
 int main(int argc, char *argv[]){
-	int newSockfd, cliAddrLen, n;
+	int newSockfd, cliAddrLen, n, pid;
 	struct sockaddr_in cliAddr, servAddr;
 	MsgType msg;
 
@@ -59,26 +59,34 @@ int main(int argc, char *argv[]){
 			exit(1);
 		}		
 
-		//연결된 socket으로 read, write
-		if((n = read(newSockfd, (char *)&msg, sizeof(msg))) < 0){
-			perror("read");
+		if((pid = fork()) < 0){
+			perror("fork");
 			exit(1);
+		}else if(pid == 0){
+			//child process에서 연결된 connection 처리
+			close(Sockfd); //필요 없으니 close
+			//연결된 socket으로 read, write
+			if((n = read(newSockfd, (char *)&msg, sizeof(msg))) < 0){
+				perror("read");
+				exit(1);
+			}
+			printf("Received request: %s....", msg.data);
+			
+			msg.type = MSG_REPLY;
+			sprintf(msg.data, "This is a reply from %d.", getpid());
+			if(write(newSockfd, (char *)&msg, sizeof(msg)) < 0){
+				perror("write");
+				exit(1);
+			}
+			printf("Relied.\n");
+	
+			usleep(10000);
+			close(newSockfd);
+			exit(0);
+		}else{
+			close(newSockfd); //필요 없으니 close
 		}
-		printf("Received request: %s....", msg.data);
-		
-		msg.type = MSG_REPLY;
-		sprintf(msg.data, "This is a reply from %d.", getpid());
-		if(write(newSockfd, (char *)&msg, sizeof(msg)) < 0){
-			perror("write");
-			exit(1);
-		}
-		printf("Relied.\n");
-
-		usleep(10000);
-		close(newSockfd);
 	}
-	//원래 TCP connection에서는 위와 같이 동작하지 않음
-	//원래 TCP connection이 맺어지면 thread 혹은 child process를 생성해 동작을 처리하게 하고, 자신은 바로 다른 TCP connection을 기다리도록 해야함
 
 	return 0;
 }

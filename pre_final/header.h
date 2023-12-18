@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
-#include <unistd.h>
+#include <unistd.h> //close function and other
 #include <sys/wait.h> //for wait
 #include <pthread.h> //for thread and mutex
 #include <sys/stat.h> //for stat

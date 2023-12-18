@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <sys/types.h>
-//shared memory를 활용하기 위한 라이브러리들 include
 #include <sys/ipc.h>
 #include <sys/shm.h>
 #include <stdlib.h>
@@ -21,7 +20,7 @@ int main(){
 	
 	//여기서는 shm.h를 include해서 shared memory를 생성
 	//현재 예제에서는 다른 process와 공유하는 것이 아니라 child와 공유하는 것이므로 IPC_PRIVATE로 shared memory를 생성해도 됨
-	//IPC_PRIVATE를 사용하면 마지막에 IPC_RMID 작업 불필요
+	//IPC_PRIVATE를 사용해서 shared memory를 만들었으면 IPC_RMID 작업 불필요
 	if((shmid = shmget(SHM_KEY, SHM_SIZE, SHM_MODE)) < 0){
 		perror("shmget");
 		exit(1);

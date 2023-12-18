@@ -1,12 +1,12 @@
 CC = gcc
 CFLAGS =
-LDFLAGS = 
+LDFLAGS = -lpthread
 
 .SUFFIXES: .c .o
 .c.o:
 	$(CC) -c $(CFLAGS)  $<
 
-ALL = order tcps tcpc udps udpc tcpc_dns myusleep select tcps_process
+ALL = order tcps tcpc udps udpc tcpc_dns myusleep select tcps_process select_thread
 
 all : $(ALL)
 
@@ -35,6 +35,9 @@ select : select.o
 	$(CC) -o $@ $< $(LDFLAGS)
 
 tcps_process : tcps_process.o
+	$(CC) -o $@ $< $(LDFLAGS)
+
+select_thread : select_thread.o
 	$(CC) -o $@ $< $(LDFLAGS)
 
 clean:
