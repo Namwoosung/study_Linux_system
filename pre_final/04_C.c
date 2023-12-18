@@ -1,6 +1,7 @@
 	"input and output format string"
 
 #include <stdio.h>
+#include <string.h>
 
 int main(){
 

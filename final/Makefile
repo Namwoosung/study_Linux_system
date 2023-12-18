@@ -6,11 +6,23 @@ LDFLAGS = -lpthread
 .c.o:
 	$(CC) -c $(CFLAGS) $<
 
-ALL = print
+ALL = sig thread myps server.c client.c
 
 all : $(ALL)
 
-print : print.o
+sig : sig.o
+	$(CC) -o $@ $< $(LDFLAGS)
+
+thread : thread.o
+	$(CC) -o $@ $< $(LDFLAGS)
+
+myps : myps.o
+	$(CC) -o $@ $< $(LDFLAGS)
+
+server : server.o
+	$(CC) -o $@ $< $(LDFLAGS)
+
+client : client.o
 	$(CC) -o $@ $< $(LDFLAGS)
 
 clean:

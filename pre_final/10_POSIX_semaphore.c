@@ -1,4 +1,5 @@
-//	prodcons.h <- shared memory, semaphore, shared data를 정의해 놓은 파일
+//	prodcons.h
+//shared memory, semaphore, shared data를 정의해 놓은 파일
 // 사실 POSIX semaphore는 thread간 동기화 이기에 공유 데이터와 semaphore 모두 shared memory가 아니라 전역 변수를 통해 활용
 // -> 이 파일에서  SHM_KEY, SEM_KEY 다 안쓰고, 그냥 buffer 구조체만 활용함
 #define MY_ID 15
@@ -27,6 +28,11 @@ typedef struct{
 } BoundedBufferType;
 
 #define SHM_SIZE sizeof(BoundedBufferType); //shared memory는 버퍼
+
+
+
+
+
 
 
 

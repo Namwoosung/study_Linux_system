@@ -1,4 +1,8 @@
 #include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <ctype.c>
 
 int main(){
 	"library가 아닌 system call 활용"

@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <signal.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/wait.c>
 
 //signal handler로 등록할 함수
 void SigIntHandler(int signo){

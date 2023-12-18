@@ -28,7 +28,7 @@ int main(){
 	if(atexit(myexit1) != 0){
 		"exit관련 함수는 성공 시 0, 실패 시 0이 아닌 값 반환"
 		perror("atexit");
-		exit(1); "파라미터는 status, parent process가 에게 exit 상태를 알려주는 역할"
+		exit(1); "파라미터는 status -> parent process가 에게 exit 상태를 알려주는 역할"
 	}
 
 
@@ -103,6 +103,7 @@ int main(){
 		"function이랑 파라미터, 파라미터 줄 거 많으면 struct로 전달"
 		perror("pthread_create");
 		exit(1);
+		"tid에는 해당 thread의 id가 들어가 있음, 자신의 id를 확인하렴녀 pthread_self() system call을 사용"
 	}
 
 	"pthread_exit(NULL)은 function 내부 마지막에 선언되어 있을 것"

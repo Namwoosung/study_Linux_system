@@ -41,10 +41,20 @@ int main(){
 }
 
 
-
-
 //assignment_07/synclib.c는 pipe의 synchronization을 활용해 wait과 signal을 구현한 라이브러리
 //duplicate 해서 ls -l과 more을 execlp로 실행하는 코드는 assignment_07/mymore.c
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
